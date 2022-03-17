@@ -3,11 +3,11 @@ const data = require('../data/zoo_data');
 const { species } = data;
 
 function getResidents(i, sex, sorted) {
-  let animalName = species[i].residents.map((animal) => animal.name);
+  let animalName = species[i].residents.map((specie) => specie.name);
   if (sex === 'male' || sex === 'female') {
     animalName = species[i].residents
-      .filter((animal) => animal.sex === sex)
-      .map((animal) => animal.name);
+      .filter((specie) => specie.sex === sex)
+      .map((specie) => specie.name);
   }
   if (sorted === true) {
     animalName.sort();
@@ -20,7 +20,7 @@ function getAnimalMap(options = {}) {
   const animalMap = { NE: [], NW: [], SE: [], SW: [] };
   if (includeNames === undefined) {
     species.forEach((specie) => {
-      animalMap[specie.location].push(species.name);
+      animalMap[specie.location].push(specie.name);
     });
     return animalMap;
   }
